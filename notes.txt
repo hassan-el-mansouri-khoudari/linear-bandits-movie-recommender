@@ -1,0 +1,6 @@
+ex 4.2
+
+tracer courbes de regret (un par bras ?) chaque instant on regarde moyenne reward meilleur bras - moyenne bras tiré à l'instant t (assez droit en echelle log)
+analyser comment ça se passe avec un bras
+
+attention choix de delta
