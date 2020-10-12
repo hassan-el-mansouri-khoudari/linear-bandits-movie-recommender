@@ -1438,6 +1438,7 @@
   {
    "cell_type": "code",
    "execution_count": 2,
+<<<<<<< HEAD
    "metadata": {},
    "outputs": [],
    "source": [
@@ -1448,14 +1449,26 @@
   },
   {
    "cell_type": "markdown",
+=======
+>>>>>>> 67cd450fcb83e2abfa84bc5233416dbc2d69b43f
    "metadata": {},
    "source": [
+<<<<<<< HEAD
     "## Rapport"
+=======
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "from bandits_utils import *"
+>>>>>>> 67cd450fcb83e2abfa84bc5233416dbc2d69b43f
    ]
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
    "execution_count": 7,
+=======
+   "execution_count": 3,
+>>>>>>> 67cd450fcb83e2abfa84bc5233416dbc2d69b43f
    "metadata": {},
    "outputs": [
     {
