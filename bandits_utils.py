@@ -37,9 +37,12 @@ def LinUCB(T, user, H, d):
             Dimension de la NMF
     
     output:
-        a_t (int):
-        Recommendation pour le user
+        a_t (int): Recommendation pour le user
+        (Temporaire: Pour analyse) history : liste des films choisis pendant de l'algorithme
+        (Temporaire: Pour analyse) regret : valeurs du regrets
     """
+    
+
     r = user.T
     x_t = H.T
 
@@ -47,13 +50,20 @@ def LinUCB(T, user, H, d):
     alpha = 1 + np.sqrt(np.log(2/delta)/2)
 
     nb_bras = H.shape[1]
+    
+    #partie initialisation du regret
+    regret = np.zeros(T)
+    reward_max = np.max(r)    
 
     ##Initialisation des variables
     A = [np.eye(d) for i in range(nb_bras)]
     b = [np.zeros((d,1)) for i in range(nb_bras)]
     theta = [np.linalg.inv(A[a])@b[a] for a in range(nb_bras)]
     p = [(theta[a].T)@x_t[a] for a in range(nb_bras)]
-
+    #history of movies chosen
+    history = np.zeros(T)
+    visits = np.zeros(nb_bras)
+    
     for t in range(T):
         for a in range(nb_bras):
             theta[a] = np.linalg.inv(A[a])@b[a]
@@ -61,4 +71,10 @@ def LinUCB(T, user, H, d):
         a_t = np.argmax(p)
         A[a_t] = (A[a_t] + x_t[a_t]@(x_t[a_t].T)).reshape((d,d))
         b[a_t] = b[a_t] + r[a_t]*(x_t[a_t]).reshape((d,1))
-    return a_t
+        
+        #analysis part
+        visits[a_t] += 1
+        history[t] = a_t
+        regret[t] = (t+1)*reward_max - r@visits
+
+    return a_t, history, regret
