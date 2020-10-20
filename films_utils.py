@@ -3,7 +3,7 @@ from scipy.sparse.linalg import svds
 from sklearn.decomposition import NMF
 from sklearn.cluster import KMeans
 
-def fill_matrix_MF(ratings, d, max_iter = 1000):
+def fill_matrix_MF(R, d, max_iter = 1000):
     """
     Returns a predicted matrix using matrix factorization to deal with zeros(non rated movies)
     """
