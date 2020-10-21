@@ -5,7 +5,7 @@ def normalized_DGC(rewards_user, user):
     """
     return GDC user /IGDC for the NDGC gain
     """
-    sorted_real = -1*np.sort(-1*X_t)
+    sorted_real = -1*np.sort(-1*user)
     IGDC_user = sorted_real[0] + np.sum(sorted_real[1:]/np.log(range(2,len(sorted_real)+1)))
     GDC_user = rewards_user[0] + np.sum(rewards_user[1:]/np.log(range(2,len(rewards_user)+1)))
     return GDC_user/IGDC_user
