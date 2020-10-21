@@ -1,3 +1,6 @@
+"""
+Ce fichier sert a load le dataset des movies
+"""
 
 import numpy as np
 import pandas as pd
@@ -5,6 +8,9 @@ import matplotlib.pyplot as plt
 from bandits_utils import *
 
 def f_load_dataset():
+    """
+    Load le dataset movie dans la matrice Ratings
+    """
     ratings = pd.read_table('ml-1m/ratings.dat', sep='::', 
                             names = ['UserID', 'MovieID', 'Rating', 'Timestamp'],
                             encoding = 'latin1',

@@ -23,7 +23,7 @@ def gain_NDGC_UCB(n, R, delta, best_movies_by_cluster, nb_clusters):
     sum = 0
     N = R.shape[0]
     for i in range(N):
-        rewards_user, _, _, _= UCB_tot_film(n, R[i], delta, best_movies_by_cluster, nb_clusters)
+        rewards_user, _, _, _, _= UCB_tot_film(n, R[i], delta, best_movies_by_cluster, nb_clusters)
         sum += normalized_DGC(rewards_user,R[i])
     mean = sum/N
     return mean
