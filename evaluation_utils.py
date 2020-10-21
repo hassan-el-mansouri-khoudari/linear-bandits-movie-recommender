@@ -1,4 +1,6 @@
 import numpy as np
+from films_utils import UCB_tot_film
+import random
 
 
 def normalized_DGC(rewards_user, user):
@@ -13,7 +15,7 @@ def normalized_DGC(rewards_user, user):
 
 
 
-def gain_NDGC_UCB(R, delta, best_movies_by_cluster, nb_clusters):
+def gain_NDGC_UCB(n, R, delta, best_movies_by_cluster, nb_clusters):
     """
     Return the normalized GDC over all users
     """
@@ -61,7 +63,7 @@ def gain_NDGC(R, delta, best_movies_by_cluster, nb_clusters, nb_rounds, method )
         if method == "random":
             rewards_user = random_recommandation_rewards(R, i, nb_rounds=nb_rounds)
         elif method == "UCB":
-            rewards_user, _, _, _= UCB_tot_film(nb_rounds, R[i], delta, best_movies_by_cluster, nb_clusters)
+            rewards_user, _, _, _, _= UCB_tot_film(nb_rounds, R[i], delta, best_movies_by_cluster, nb_clusters)
         elif method == "best_average":
             rewards_user = best_average_rewards(R, i, nb_rounds=nb_rounds)
 

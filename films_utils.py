@@ -41,6 +41,7 @@ def UCB_tot_film(n, new_user, delta, best_movies_by_cluster, k):
     T = np.zeros(k, dtype = int) ##T[i] = nb de fois où i a été tiré
     arms_mat = np.zeros((n,k))
     mu = np.zeros(k) ##mu[i] = moyenne empirique de i
+    movies = []
 
     A = np.zeros(n, dtype = int)
     
@@ -56,10 +57,12 @@ def UCB_tot_film(n, new_user, delta, best_movies_by_cluster, k):
 
         ##On génère X_t la réalisation à partir du bras choisi
         movie = best_movies_by_cluster[:,A[t]][T[A[t]]]
+        if movie not in movies:
+            movies += [movie]
         X[t] = get_reward_film(movie,new_user)
 
         ##Le bras i a été tiré une fois de plus
         T[A[t]] += 1 
         arms_mat[t, A[t]] = X[t] ##On stock la valeur de la réalisation dans une matrice
         mu[A[t]] = 1/T[A[t]] * sum(arms_mat[:, A[t]]) ##On update la moyenne empirique
-    return X, A, T, mu
+    return X, A, T, mu, movies
