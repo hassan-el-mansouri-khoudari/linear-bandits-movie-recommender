@@ -39,7 +39,7 @@ def best_average_rewards(R,user,nb_rounds):
 
 
 def random_recommandation_rewards(R, user,nb_rounds):
-     """
+    """
     returns the rewards for a user according to a random selection of movies
     """
     rewards_user = []
